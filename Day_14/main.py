@@ -1,6 +1,6 @@
 from art import logo
 from art import vs
-from random import randint
+import random
 from game_data import data
 
 
@@ -10,8 +10,7 @@ def higher_lower_game():
     print(logo)
     score=0
     game_should_continue=True
-    i=randint(0,len(data)-1)
-    A=data[i]
+    A=random.choice(data)
     
     
 
@@ -20,19 +19,17 @@ def higher_lower_game():
         
         print(f"Compare A: {A['name']},a {A['description']},from {A['country']}.")
         print(vs)
-        
-        j=i
-        while j==i:
-            j=randint(0,len(data)-1)
-        B=data[j]
+        B=random.choice(data)
+        while A==B:
+            B=random.choice(data)
         print(f"Compare B:{B['name']},a {B['description']},from {B['country']}.")
         guess = input("Who has more followers? Type 'A' or 'B': ").lower()
         if (guess=="a" and A['follower_count'] > B['follower_count']) or (guess=="b" and B['follower_count'] > A['follower_count']):
             score+=1
             print(f"your current score {score}")
             if guess=="a":
-            
-                A=data[i]
+                pass
+                            
             else:
                 A=B
                 
